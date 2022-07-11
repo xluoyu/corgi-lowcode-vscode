@@ -8,7 +8,20 @@ import * as vscode from 'vscode';
 import* as fs from 'fs';
 import path = require('path');
 
-let myStatusBarItem: vscode.StatusBarItem;
+const templatePath = 'src/view/index.html';
+
+/**
+ * 读取模板
+ * @param context 
+ */
+function getWebviewContent(context: vscode.ExtensionContext) {
+	vscode.window.showInformationMessage(templatePath);
+
+	const resourcePath = path.join(context.extensionPath, templatePath);
+	const html = fs.readFileSync(resourcePath, 'utf8');
+	return html;
+}
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -35,7 +48,7 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.ViewColumn.One,
 			{
 				enableScripts: true, // 启用JS，默认禁用
-				 retainContextWhenHidden: true, // webview被隐藏时保持状态，避免被重置
+				retainContextWhenHidden: true, // webview被隐藏时保持状态，避免被重置
 			}
 		);
 		
@@ -50,7 +63,12 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		});
 
+		panel.webview.html = getWebviewContent(context);
 
-		vscode.window.showInformationMessage(filePath);
+		// 销毁
+		panel.onDidDispose(() => {
+			startsBarItem.dispose();
+		});
+
 	}));
 }

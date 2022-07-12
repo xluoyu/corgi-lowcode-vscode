@@ -15,12 +15,33 @@
   }
 </style>
 <body>
-  <iframe src="http://localhost:8080/form" width="100%" height="100%" frameborder="0"></iframe>
+  <iframe id="frame" src="http://localhost:8080/form" width="100%" height="100%" frameborder="0"></iframe>
 
   <script>
-    window.onload = () => {
+    const vscode = acquireVsCodeApi();
 
+    const methods = {
+      getEnv() {
+        const frame = document.getElementById('frame');
+        frame.contentWindow.postMessage({
+          type: 'getEnv',
+          data: {
+            env: 'vscode'
+          }
+        }, '*');
+      }
     }
+
+    window.addEventListener('message', event => {
+      /**
+       * 判断消息方法所处位置
+      */
+      if (event.data.cmd && methods[event.data.cmd]) {
+        methods[event.data.cmd](event.data.data);
+      } else {
+        vscode.postMessage(event.data);
+      }
+    });
   </script>
 </body>
 </html>

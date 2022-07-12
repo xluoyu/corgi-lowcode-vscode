@@ -1,7 +1,7 @@
 {
   "name": "corgi-lowcode",
 	"displayName": "corgi-lowcode",
-	"description": "a lowcode platform",
+	"description": "Element Plus可视化表单设计及代码生成器",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.69.0"
@@ -10,8 +10,18 @@
 		"Other"
 	],
 	"activationEvents": [
-  	"*"
+  	"oncommand:corgi-lowcode.open"
 	],
+	"author": {
+		"name": "xluoyu"
+	},
+	"publisher": "xluoyu",
+	"icon": "public/logo.png",
+	"homepage": "https://corgi-lowcode.vercel.app/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xluoyu/corgi-lowcode-vscode"
+	},
 	"main": "./out/extension.js",
 	"contributes": {
 		"menus": {

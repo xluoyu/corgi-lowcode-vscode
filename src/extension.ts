@@ -15,12 +15,21 @@ const templatePath = 'src/view/index.html';
  * @param context 
  */
 function getWebviewContent(context: vscode.ExtensionContext) {
-	vscode.window.showInformationMessage(templatePath);
-
 	const resourcePath = path.join(context.extensionPath, templatePath);
 	const html = fs.readFileSync(resourcePath, 'utf8');
 	return html;
 }
+
+const methods = {
+	saveFile (message: any, dirPath: string) {
+		const {fileName, code} = message;
+		vscode.window.showInformationMessage(message);
+		const filePath = path.join(dirPath, fileName);
+		fs.writeFileSync(filePath, code);
+		vscode.window.showInformationMessage(`文件${fileName}创建成功`);
+	}
+};
+
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -65,10 +74,18 @@ export function activate(context: vscode.ExtensionContext) {
 
 		panel.webview.html = getWebviewContent(context);
 
+		panel.webview.onDidReceiveMessage(message => {
+			console.log(message);
+			if (message.cmd && methods[message.cmd as keyof typeof methods]) {
+				methods[message.cmd as keyof typeof methods](message.data, filePath);
+			} else {
+				vscode.window.showInformationMessage(`没有与消息对应的方法`);
+			}
+		});
+
 		// 销毁
 		panel.onDidDispose(() => {
 			startsBarItem.dispose();
 		});
-
 	}));
 }

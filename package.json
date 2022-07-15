@@ -2,7 +2,7 @@
   "name": "corgi-lowcode",
 	"displayName": "corgi-lowcode",
 	"description": "Element Plus可视化表单设计及代码生成器",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.69.0"
 	},
@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-  	"oncommand:corgi-lowcode.open"
+  	"*"
 	],
 	"author": {
 		"name": "xluoyu"

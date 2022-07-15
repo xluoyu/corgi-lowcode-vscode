@@ -5,8 +5,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import* as fs from 'fs';
-import path = require('path');
+import * as fs from 'fs';
+import * as path from 'path';
 
 const templatePath = 'src/view/index.html';
 
@@ -30,6 +30,8 @@ const methods = {
 	}
 };
 
+type IMethodsType = keyof typeof methods;
+
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -37,6 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('corgi-lowcode.open', (url) => {
 		if (!url) {
 			vscode.window.showErrorMessage('无法获取文件夹路径');
+			return;
 		}
 
 		let filePath = url.fsPath,
@@ -75,9 +78,8 @@ export function activate(context: vscode.ExtensionContext) {
 		panel.webview.html = getWebviewContent(context);
 
 		panel.webview.onDidReceiveMessage(message => {
-			console.log(message);
-			if (message.cmd && methods[message.cmd as keyof typeof methods]) {
-				methods[message.cmd as keyof typeof methods](message.data, filePath);
+			if (message.cmd && methods[message.cmd as IMethodsType]) {
+				methods[message.cmd as IMethodsType](message.data, filePath);
 			} else {
 				vscode.window.showInformationMessage(`没有与消息对应的方法`);
 			}

@@ -15,14 +15,18 @@
   }
 </style>
 <body>
-  <iframe id="frame" src="http://localhost:8080/form" width="100%" height="100%" frameborder="0"></iframe>
+  <p id="loading">加载中...</p>
+  <iframe id="frame" src="https://corgi-lowcode.vercel.app/" width="100%" height="100%" frameborder="0"></iframe>
 
   <script>
     const vscode = acquireVsCodeApi();
+    const frame = document.getElementById('frame');
+    frame.onload = function() {
+      document.getElementById('loading').style.display = 'none';
+    }
 
     const methods = {
       getEnv() {
-        const frame = document.getElementById('frame');
         frame.contentWindow.postMessage({
           type: 'getEnv',
           data: {

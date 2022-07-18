@@ -8,7 +8,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const templatePath = 'src/view/index.html';
+const templatePath = 'public/index.html';
 
 /**
  * 读取模板
@@ -16,7 +16,11 @@ const templatePath = 'src/view/index.html';
  */
 function getWebviewContent(context: vscode.ExtensionContext) {
 	const resourcePath = path.join(context.extensionPath, templatePath);
+	vscode.window.showInformationMessage(`文件路径${resourcePath}`);
 	const html = fs.readFileSync(resourcePath, 'utf8');
+
+	vscode.window.showInformationMessage(`文件${html}`);
+
 	return html;
 }
 

@@ -1,0 +1,88 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Xluoyu\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;D:\mysql-8.0.28-winx64\bin;D:\Dart\dart-sdk\bin;D:\flutter\bin;C:\Users\Xluoyu\AppData\Roaming\npm;C:\Program Files\nodejs\;;D:\微信web开发者工具\dll;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Xluoyu\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\Xluoyu\AppData\Local\Programs\Python\Python38-32\;C:\Users\Xluoyu\AppData\Local\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;D:\IntelliJ IDEA 2021.3\bin;D:\Fiddler
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  16.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\Xluoyu\AppData\Local\Yarn\Cache\v4\npm-estraverse-4.3.0-398ad3f3c5a24948be7725e83d11a7de28cdbd1d\node_modules\estraverse\.jshintrc' -> 'E:\个人项目\corgi-lowcode-vscode\node_modules\@typescript-eslint\utils\node_modules\estraverse\.jshintrc'
+
+npm manifest: 
+  {
+    "name": "corgi-lowcode",
+  	"displayName": "corgi-lowcode",
+  	"description": "Element Plus可视化表单设计及代码生成器",
+  	"version": "0.0.3",
+  	"engines": {
+  		"vscode": "^1.69.0"
+  	},
+  	"categories": [
+  		"Other"
+  	],
+  	"activationEvents": [
+    	"oncommands:corgi-lowcode.open"
+  	],
+  	"author": {
+  		"name": "xluoyu"
+  	},
+  	"publisher": "xluoyu",
+  	"icon": "public/logo.png",
+  	"homepage": "https://corgi-lowcode.vercel.app/",
+  	"repository": {
+  		"type": "git",
+  		"url": "https://github.com/xluoyu/corgi-lowcode-vscode"
+  	},
+  	"main": "./out/extension.js",
+  	"contributes": {
+  		"menus": {
+  			"explorer/context": [
+  				{
+  					"command": "corgi-lowcode.open",
+  					"group": "navigation"
+  				}
+  			]
+  		},
+  		"commands": [
+  			{
+  				"command": "corgi-lowcode.open",
+  				"title": "打开Corgi-lowcode"
+  			}
+  		]
+  	},
+  	"scripts": {
+  		"vscode:prepublish": "yarn run compile",
+  		"compile": "tsc -p ./",
+  		"watch": "tsc -watch -p ./",
+  		"pretest": "yarn run compile && yarn run lint",
+  		"lint": "eslint src --ext ts",
+  		"test": "node ./out/test/runTest.js"
+  	},
+  	"devDependencies": {
+  		"@types/vscode": "^1.69.0",
+  		"@types/glob": "^7.2.0",
+  		"@types/mocha": "^9.1.1",
+  		"@types/node": "16.x",
+  		"@typescript-eslint/eslint-plugin": "^5.30.0",
+  		"@typescript-eslint/parser": "^5.30.0",
+  		"eslint": "^8.18.0",
+  		"glob": "^8.0.3",
+  		"mocha": "^10.0.0",
+  		"typescript": "^4.7.4",
+  		"@vscode/test-electron": "^2.1.5"
+  	}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

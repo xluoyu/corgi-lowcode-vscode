@@ -16,10 +16,10 @@ const templatePath = 'public/index.html';
  */
 function getWebviewContent(context: vscode.ExtensionContext) {
 	const resourcePath = path.join(context.extensionPath, templatePath);
-	vscode.window.showInformationMessage(`文件路径${resourcePath}`);
+	// vscode.window.showInformationMessage(`文件路径${resourcePath}`);
 	const html = fs.readFileSync(resourcePath, 'utf8');
 
-	vscode.window.showInformationMessage(`文件${html}`);
+	// vscode.window.showInformationMessage(`文件${html}`);
 
 	return html;
 }

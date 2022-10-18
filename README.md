@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://corgi-lowcode.vercel.app/logo.png" width="100" align="center"></img>
+  <img src="https://corgi-icode.netlify.app/logo.png" width="100" align="center"></img>
 
   <h2 align="center">Corgi代码生成器</h2>
 
